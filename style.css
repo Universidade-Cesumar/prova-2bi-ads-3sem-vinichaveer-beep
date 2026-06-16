@@ -1,0 +1,131 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f0f4f8;
+  color: #222;
+}
+
+header {
+  background: #1B6CA8;
+  color: white;
+  padding: 16px 24px;
+}
+
+header h1 {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+header p {
+  font-size: 0.85rem;
+  opacity: 0.85;
+  margin-top: 2px;
+}
+
+main {
+  max-width: 800px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.card h2 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 14px;
+  color: #1B6CA8;
+  border-bottom: 2px solid #e0e8f0;
+  padding-bottom: 8px;
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+  min-width: 160px;
+}
+
+label {
+  font-size: 0.82rem;
+  font-weight: bold;
+  color: #444;
+}
+
+input {
+  padding: 9px 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border 0.2s;
+}
+
+input:focus {
+  border-color: #1B6CA8;
+}
+
+button {
+  padding: 9px 20px;
+  background: #1B6CA8;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  align-self: flex-end;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+button:hover { background: #155a8a; }
+button:disabled { background: #999; cursor: not-allowed; }
+
+#status {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  min-height: 18px;
+}
+
+.status-ok  { color: #1a7a40; }
+.status-err { color: #c0392b; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+thead tr {
+  background: #1B6CA8;
+  color: white;
+}
+
+th, td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid #e0e8f0;
+}
+
+tbody tr:hover { background: #f5faff; }
+
+.empty {
+  text-align: center;
+  color: #888;
+  padding: 24px;
+  font-size: 0.9rem;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Almoxarifado - Controle de Estoque</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <h1>Almoxarifado — Controle de Estoque</h1>
+  <p>Cadastro e listagem de materiais</p>
+</header>
+
+<main>
+
+  <!-- Formulário de cadastro -->
+  <div class="card">
+    <h2>Cadastrar Material</h2>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="input-nome">Nome do Material</label>
+        <input type="text" id="input-nome" placeholder="Ex: Luvas de procedimento" />
+      </div>
+      <div class="form-group">
+        <label for="input-quantidade">Quantidade</label>
+        <input type="number" id="input-quantidade" placeholder="Ex: 10" min="0" />
+      </div>
+      <button id="btn-cadastrar">Cadastrar</button>
+    </div>
+    <div id="status"></div>
+  </div>
+
+  <!-- Tabela de materiais -->
+  <div class="card">
+    <h2>Materiais em Estoque</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nome do Material</th>
+          <th>Quantidade</th>
+        </tr>
+      </thead>
+      <tbody id="lista-materiais">
+        <tr><td colspan="3" class="empty">Carregando materiais...</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</main>
+
+<script src="main.js"></script>
+
+</body>
+</html>
