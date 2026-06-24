@@ -24,7 +24,7 @@ header p {
 }
 
 main {
-  max-width: 800px;
+  max-width: 900px;
   margin: 24px auto;
   padding: 0 16px;
 }
@@ -81,6 +81,13 @@ main {
   width: 100%;
 }
 
+/* Info retirada */
+.info-retirada {
+  margin-top: 10px;
+  font-size: 0.83rem;
+  color: #555;
+}
+
 .form-row {
   display: flex;
   gap: 10px;
@@ -129,6 +136,24 @@ button {
 
 button:hover { background: #155a8a; }
 button:disabled { background: #999; cursor: not-allowed; }
+
+/* Botões da tabela */
+.btn-baixar {
+  padding: 5px 12px;
+  font-size: 0.82rem;
+  background: #1B6CA8;
+  align-self: unset;
+  margin-right: 6px;
+}
+
+.btn-excluir {
+  padding: 5px 12px;
+  font-size: 0.82rem;
+  background: #c0392b;
+  align-self: unset;
+}
+
+.btn-excluir:hover { background: #a93226; }
 
 #status {
   margin-top: 10px;
