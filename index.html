@@ -15,6 +15,14 @@
 
 <main>
 
+  <!-- Dashboard -->
+  <div class="card dashboard">
+    <div class="dash-item">
+      <span class="dash-label">Total de Itens</span>
+      <span class="dash-value" id="total-itens">0</span>
+    </div>
+  </div>
+
   <!-- Formulário de cadastro -->
   <div class="card">
     <h2>Cadastrar Material</h2>
@@ -35,6 +43,9 @@
   <!-- Tabela de materiais -->
   <div class="card">
     <h2>Materiais em Estoque</h2>
+    <div class="busca-row">
+      <input type="text" id="input-busca" placeholder="Buscar material..." />
+    </div>
     <table>
       <thead>
         <tr>

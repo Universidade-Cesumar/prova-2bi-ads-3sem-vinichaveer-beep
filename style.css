@@ -46,6 +46,41 @@ main {
   padding-bottom: 8px;
 }
 
+/* Dashboard */
+.dashboard {
+  display: flex;
+  gap: 20px;
+}
+
+.dash-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.dash-label {
+  font-size: 0.8rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.dash-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1B6CA8;
+}
+
+/* Busca */
+.busca-row {
+  margin-bottom: 14px;
+}
+
+.busca-row input {
+  width: 100%;
+}
+
 .form-row {
   display: flex;
   gap: 10px;
@@ -122,6 +157,17 @@ th, td {
 }
 
 tbody tr:hover { background: #f5faff; }
+
+/* Estoque crítico */
+tr.estoque-critico {
+  background: #fff3cd;
+  color: #856404;
+  font-weight: bold;
+}
+
+tr.estoque-critico:hover {
+  background: #ffe8a1;
+}
 
 .empty {
   text-align: center;

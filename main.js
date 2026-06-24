@@ -5,32 +5,55 @@ const inputQuantidade = document.getElementById('input-quantidade');
 const btnCadastrar    = document.getElementById('btn-cadastrar');
 const listaMateriais  = document.getElementById('lista-materiais');
 const statusDiv       = document.getElementById('status');
+const totalItens      = document.getElementById('total-itens');
+const inputBusca      = document.getElementById('input-busca');
+
+let todosMateriais = [];
+
+// Renderiza a tabela aplicando filtro e classes de estoque crítico
+function renderizarTabela(filtro = '') {
+  const termo = filtro.toLowerCase();
+  const filtrados = todosMateriais.filter(item =>
+    (item.nome ?? '').toLowerCase().includes(termo)
+  );
+
+  totalItens.textContent = todosMateriais.length;
+
+  if (filtrados.length === 0) {
+    listaMateriais.innerHTML = '<tr><td colspan="3" class="empty">Nenhum material encontrado.</td></tr>';
+    return;
+  }
+
+  listaMateriais.innerHTML = filtrados.map((item, i) => {
+    const qtd = Number(item.quantidade ?? 0);
+    const critico = qtd < 10 ? 'estoque-critico' : '';
+    return `
+      <tr class="${critico}">
+        <td>${i + 1}</td>
+        <td>${item.nome ?? '—'}</td>
+        <td>${qtd}</td>
+      </tr>
+    `;
+  }).join('');
+}
 
 // GET — carrega a lista ao abrir a página
 async function carregarMateriais() {
   try {
     const res = await fetch(API_URL);
     if (!res.ok) throw new Error('Erro ao buscar materiais');
-    const dados = await res.json();
-
-    if (dados.length === 0) {
-      listaMateriais.innerHTML = '<tr><td colspan="3" class="empty">Nenhum material cadastrado ainda.</td></tr>';
-      return;
-    }
-
-    listaMateriais.innerHTML = dados.map((item, i) => `
-      <tr>
-        <td>${i + 1}</td>
-        <td>${item.nome ?? item.name ?? '—'}</td>
-        <td>${item.quantidade ?? item.quantity ?? '—'}</td>
-      </tr>
-    `).join('');
-
+    todosMateriais = await res.json();
+    renderizarTabela(inputBusca.value);
   } catch (err) {
-    listaMateriais.innerHTML = '<tr><td colspan="3" class="empty">Erro ao carregar materiais.</td></tr>';
+    listaMateriais.innerHTML = '<tr><td colspan="3" class="empty">Erro ao carregar materiais. Verifique sua conexão.</td></tr>';
     console.error(err);
   }
 }
+
+// Filtro de busca em tempo real
+inputBusca.addEventListener('input', () => {
+  renderizarTabela(inputBusca.value);
+});
 
 // POST — cadastra novo material
 btnCadastrar.addEventListener('click', async () => {
@@ -60,7 +83,7 @@ btnCadastrar.addEventListener('click', async () => {
     await carregarMateriais();
 
   } catch (err) {
-    mostrarStatus('Erro ao cadastrar. Tente novamente.', false);
+    mostrarStatus('Erro ao cadastrar. Verifique sua conexão e tente novamente.', false);
     console.error(err);
   } finally {
     btnCadastrar.disabled = false;
